@@ -23,5 +23,7 @@ defmodule PollerPhxWeb.Router do
     pipe_through :browser
 
     get "/", DistrictController, :index
+    get "/new", DistrictController, :new
+    post "/", DistrictController, :create
   end
 end
