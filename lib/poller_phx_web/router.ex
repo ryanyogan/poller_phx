@@ -22,8 +22,6 @@ defmodule PollerPhxWeb.Router do
   scope "/districts", PollerPhxWeb do
     pipe_through :browser
 
-    get "/", DistrictController, :index
-    get "/new", DistrictController, :new
-    post "/", DistrictController, :create
+    resources "/", DistrictController, except: [:show]
   end
 end
