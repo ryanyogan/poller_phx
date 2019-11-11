@@ -11,7 +11,7 @@
       <tr>
         <td><%= question.description %></td>
         <td>
-          <%= link to: Routes.question_path(@conn, :index, @district.id) do %>
+          <%= link to: Routes.choice_path(@conn, :index, @district.id, question) do %>
             <i class="fas fa-list"></i>
           <% end %>
           <%= link to: Routes.question_path(@conn, :edit, @district.id, question) do %>
