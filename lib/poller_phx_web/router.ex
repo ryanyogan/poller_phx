@@ -35,4 +35,13 @@ defmodule PollerPhxWeb.Router do
     resources "/:district_id/questions", QuestionController, except: [:show]
     resources "/:district_id/questions/:question_id/choices", ChoiceController, except: [:show]
   end
+
+  scope "/api", PollerPhxWeb.Api, as: :api do
+    pipe_through :api
+
+    get "/districts", DistrictController, :index
+    get "/districts/:district_id", DistrictController, :show
+    get "/districts/:district_id/questions", QuestionController, :index
+    get "/questions/:question_id/choices", ChoiceController, :index
+  end
 end
