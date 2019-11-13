@@ -35,7 +35,8 @@ defmodule PollerPhx.MixProject do
       {:phoenix_ecto, "~> 4.1"},
 
       # Poller Applications
-      {:poller_dal, [path: "../poller_dal"]}
+      {:poller_dal, [path: "../poller_dal"]},
+      {:poller, [path: "../poller"]}
     ]
   end
 end
