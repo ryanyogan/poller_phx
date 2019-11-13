@@ -9,7 +9,8 @@ defmodule PollerPhx.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      dialyzer: [plt_add_deps: :transitive]
     ]
   end
 
@@ -33,6 +34,7 @@ defmodule PollerPhx.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_ecto, "~> 4.1"},
+      {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false},
 
       # Poller Applications
       {:poller_dal, [path: "../poller_dal"]},
