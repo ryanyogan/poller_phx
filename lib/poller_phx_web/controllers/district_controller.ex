@@ -25,4 +25,33 @@ defmodule PollerPhxWeb.DistrictController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+
+  def edit(conn, %{"id" => id}) do
+    district = Districts.get_district!(id)
+    changeset = Districts.change_district(district)
+    render(conn, "edit.html", district: district, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "district" => district_params}) do
+    district = Districts.get_district!(id)
+
+    case Districts.update_district(district, district_params) do
+      {:ok, _district} ->
+        conn
+        |> put_flash(:info, "District updated successfully.")
+        |> redirect(to: Routes.district_path(conn, :index))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "edit.html", district: district, changeset: changeset)
+    end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    district = Districts.get_district!(id)
+    {:ok, _district} = Districts.delete_district(district)
+
+    conn
+    |> put_flash(:info, "District deleted successfully.")
+    |> redirect(to: Routes.district_path(conn, :index))
+  end
 end
