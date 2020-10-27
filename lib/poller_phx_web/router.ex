@@ -24,6 +24,6 @@ defmodule PollerPhxWeb.Router do
 
     resources "/", DistrictController, except: [:show]
 
-    resources "/:id/questions", QuestionController, only: [:index]
+    resources "/:district_id/questions", QuestionController, except: [:show]
   end
 end

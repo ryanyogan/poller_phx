@@ -1,0 +1,19 @@
+<%= form_for @changeset, @action, fn f -> %>
+
+<%= if @changeset.action do %>
+<div class="error">
+  <p>An error has occurred. Please check the errors below and try again.</p>
+</div>
+<% end %>
+
+
+<%= label f, :description %>
+<%= text_input f, :description %>
+<%= error_tag f, :description %>
+
+<div>
+  <%= submit "Save", class: "btn" %>
+  <%= link "Cancel", to: Routes.question_path(@conn, :index, @district.id), class: "btn-white" %>
+</div>
+
+<% end  %>

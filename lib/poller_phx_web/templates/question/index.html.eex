@@ -12,9 +12,22 @@
     <tr>
       <td><%= question.description %></td>
       <td>
-        ...
+        <%= link to: Routes.question_path(@conn, :edit, @district.id, question) do %>
+        <i class="fas fa-edit"></i>
+        <% end %>
+
+        <%= link to: Routes.question_path(@conn, :delete, @district.id, question),
+          method: :delete,
+          data: [confirm: "Are you sure?"] do %>
+        <i class="fas fa-trash"></i>
+        <% end  %>
       </td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<div>
+  <%= link "New Question", to: Routes.question_path(@conn, :new, @district.id), class: "btn" %>
+  <%= link "Back", to: Routes.district_path(@conn, :index), class: "btn-white" %>
+</div>
