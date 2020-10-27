@@ -23,5 +23,7 @@ defmodule PollerPhxWeb.Router do
     pipe_through :browser
 
     resources "/", DistrictController, except: [:show]
+
+    resources "/:id/questions", QuestionController, only: [:index]
   end
 end
