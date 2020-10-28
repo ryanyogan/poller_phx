@@ -9,10 +9,6 @@ defmodule PollerPhxWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", PollerPhxWeb do
     pipe_through :browser
 
@@ -23,7 +19,10 @@ defmodule PollerPhxWeb.Router do
     pipe_through :browser
 
     resources "/", DistrictController, except: [:show]
-
     resources "/:district_id/questions", QuestionController, except: [:show]
+
+    resources "/:district_id/questions/:question_id/choices",
+              ChoiceController,
+              except: [:show]
   end
 end
